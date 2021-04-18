@@ -23,8 +23,8 @@ function main(input){
   console.log(opNum)
 }
 
-// const arg = "8\n382253568 723152896 37802240 379425024 404894720 471526144"
+const arg = "8\n382253568 723152896 37802240 379425024 404894720 471526144"
 
-// main(arg)
+main(arg)
 
 main(require("fs").readFileSync("/dev/stdin", "utf8"));
