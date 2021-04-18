@@ -8,11 +8,12 @@ function main(input) {
             newArray.push(element)
         }
     });
+    newArray.pop()
     console.log(newArray.length.toString())
 
 }
 
-// main(require("fs").readFileSync("/dev/stdin", "utf8"));
+main(require("fs").readFileSync("/dev/stdin", "utf8"))
 
 const args = "7\n50\n30\n50\n100\n50\n80\n30"
 

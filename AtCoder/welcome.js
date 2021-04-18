@@ -12,6 +12,6 @@ function welcome(input) {
 
 welcome(require("fs").readFileSync("/dev/stdin", "utf8"));
 
-let data = "1\n2 3\ntest"
+// let data = "1\n2 3\ntest"
 
-console.log(welcome(data))
+// console.log(welcome(data))
