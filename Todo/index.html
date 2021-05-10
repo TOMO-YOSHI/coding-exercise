@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo</title>
+</head>
+<style>
+#main {
+    margin: 32px;
+}
+li:hover {
+    cursor: pointer;
+    background-color: gray;
+}
+</style>
+<body id="main">
+    <h1>Todo List</h1>
+    <div>
+        <p>Please input your task</p>
+        <form>
+            <input id='inputedTask' type="text" placeholder="e.g. Cleaning" name='inputedTask'>
+            <input id='inputedDate' type="date" name='inputedDate'>
+            <button id="submitBtn">Submit</button>
+        </form>
+        <div>
+            <p>List of tasks</p>
+            <ul id="todoUl">
+                <!-- <li>Task</li> -->
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    const todoList = []
+
+    // let url = window.location.href.split('');
+    // const inputedTask = url.slice(url.indexOf('=') + 1, url.indexOf('&')).join('');
+    // url = url.slice(url.indexOf('&'));
+    // const inputedDate = url.slice(url.indexOf('=') + 1, ).join('');
+
+    function onClickSubmit(e) {
+        e.preventDefault();
+
+        const inputedTask = document.querySelector('#inputedTask').value
+        const inputedDate = document.querySelector('#inputedDate').value
+        const newTask = inputedDate + " - " + inputedTask;
+
+        todoList.push(newTask);
+
+        updateList();
+    }
+
+    function onClickDelete(e) {
+        // console.log(e.target.getAttribute('id'));
+        const deleteConfirm = window.confirm('Do you really want to delete this task?');
+        if(deleteConfirm) {
+            todoList.splice(e.target.getAttribute('id'), 1);
+            updateList();
+        }
+    }
+
+    function updateList() {
+        document.querySelector('#todoUl').textContent = '';
+
+        todoList.forEach((el, i) => {
+            const node = document.createElement('LI');
+            const textnode = document.createTextNode(el);
+            node.appendChild(textnode);
+            node.setAttribute('id', i);
+            node.addEventListener('click', function (e) { onClickDelete(e) });
+            document.querySelector("#todoUl").appendChild(node);
+        });
+    }
+
+    document.querySelector('#submitBtn').addEventListener('click', (e) => onClickSubmit(e));
+
+</script>
+</html>

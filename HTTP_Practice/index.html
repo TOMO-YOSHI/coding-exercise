@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #main {
+        text-align: center;
+        margin-top: 50px;
+    }
+    #buttonDiv {
+        margin-top: 20px;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+    #imgDiv {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+</style>
+<body>
+    <div id='main'>
+        <p>URL: <span id="urlSpan"></span></p>
+        <div id="imgDiv">
+            <img id="imageElement" src="">
+            <div class="loader"></div>
+        </div>
+        <div id="buttonDiv">
+            <button id="fetchButton">Change Image by fetch method</button>
+        </div>
+    </div>
+</body>
+<script>
+    var apiUrl = 'https://dog.ceo/api/breeds/image/random';
+
+    function changeUIFunc(res) {
+        document.querySelector("#urlSpan").textContent = res.message
+        document.querySelector("#imageElement").setAttribute('src', res.message)
+    }
+
+    function reqListener() {
+        let response = JSON.parse(this.response);
+        changeUIFunc(response);
+    }
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.addEventListener('load', reqListener);
+    xhttp.open("GET", apiUrl);
+    xhttp.send();
+
+    async function onClickFetch(){
+        document.querySelector('#imageElement').setAttribute('src', '');
+        document.querySelector('.loader').textContent = 'Loading...'
+
+        const data = await fetch(apiUrl, {
+            method: "GET",
+            mode: 'cors',
+            credentials: 'same-origin',
+            // headers: {
+                // 'Access-Control-Allow-Origin': '*',
+                // 'Access-Control-Allow-Methods': 'GET',
+                // 'Access-Control-Allow-Headers': 'Content-Type',
+                // 'Content-Type': 'application/json',
+                // 'Access-Control-Max-Age': 86400
+            // }
+        })
+        .then(res => res.json())
+        .catch(err => console.log(err))
+
+        document.querySelector('.loader').textContent = ''
+        changeUIFunc(data)
+    }
+
+    document.querySelector('#fetchButton').addEventListener('click', onClickFetch);
+
+</script>
+</html>
