@@ -20,3 +20,13 @@ function fibo(n) {
 }
 
 fibo(10);
+
+// function fibonacci(n) {
+//     const fibArr = [0, 1];
+
+//     while (fibArr.length - 1 < n) {
+//         fibArr.push(fibArr[fibArr.length - 2] + fibArr[fibArr.length - 1]);
+//     }
+
+//     return fibArr[n]
+// }
