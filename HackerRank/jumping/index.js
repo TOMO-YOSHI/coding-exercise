@@ -2,7 +2,6 @@ function jumpingOnClouds(c) {
     // Write your code here
     let i = 0;
     let steps = 0;
-    console.log(c)
     while (i < c.length - 1) {
 
         if (c[i + 2] === 0) {
