@@ -1,20 +1,16 @@
 function savings(deposit, percent, years) {
     const per = percent / 100;
-    let savings = 0;
+    let savings = 400;
 
     for (let i = 0; i < years; i++) {
         savings += savings * per;
-        if(i>6){
-            savings += deposit + 600;
-        } else {
-            savings += deposit;
-        }
+        savings += deposit;
         
-        console.log(`${i} year: `, savings);
+        console.log(`${i+1} year: `, savings);
     }
 
     console.log(`Result: `, savings);
     return;
 }
 
-savings(200, 7, 26);
+savings(0, 6, 25);
