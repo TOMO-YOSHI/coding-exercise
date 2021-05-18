@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id='nomalDom'>
+        <p>Hello world!!!</p>
+    </div>
+    <div id='shadowDom'>
+    </div>
+    <script>
+        function insertShadow() {
+            // const shadow = document.querySelector('#shadowDom').attachShadow({ mode: 'open' });
+            const shadow = document.querySelector('#shadowDom').attachShadow({ mode: 'closed' });
+            // const shadow = document.querySelector('#shadowDom');
+            const node = document.createElement('p');
+            const text = document.createTextNode('Hello world, shadow');
+            node.appendChild(text);
+            node.setAttribute('id', 'shadowP')
+            shadow.innerHTML = `<link rel="stylesheet" href="shadow.css">`
+            shadow.appendChild(node);
+        }
+        insertShadow();
+
+        const nomalDom = document.querySelector('#nomalDom');
+        console.log(nomalDom);
+        const shadowDom = document.querySelector('#shadowDom');
+        console.log(shadowDom);
+        
+        const shadowHelloWorld = shadowDom.shadowRoot;
+        console.log(shadowHelloWorld);
+        shadowHelloWorld.innerHTML = "<p>Hey!</p>"
+
+    </script>
+</body>
+</html>
