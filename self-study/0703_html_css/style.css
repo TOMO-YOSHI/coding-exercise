@@ -1,0 +1,55 @@
+img {
+    width: 100%;
+    height: auto;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 0 1rem; */
+    background-color: white;
+    border-bottom: 1px solid black;
+    position: fixed;
+    width: 100%;
+}
+
+header nav ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    font-size: 1.25rem;
+    margin-left: 1rem;
+}
+
+header nav ul li {
+    margin-left: 1rem;
+    padding: .25rem;
+    cursor: pointer;
+}
+
+header nav ul li:hover {
+   color: white;
+   background-color: black;
+}
+
+
+
+header nav ul li:first-child {
+    margin-left: 0rem;
+}
+
+.account-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+/* .image-div {
+    position: absolute;
+    top: 72px;
+} */
